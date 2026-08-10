@@ -49,7 +49,14 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+  /* Grid/flex items default to min-width:auto, which lets long unbroken text
+     (emails, URLs) force a track wider than its column — overriding to 0 lets
+     them shrink and wrap properly, especially in single-column mobile layouts. */
+  .value-grid > *, .benefits-grid > *, .about-grid > *, .testi-grid > *,
+  .faq-grid > *, .form-grid > *, .contact-grid > *, .services-grid > *,
+  .about-stats > *, .form-row > *, .partners-grid > *,
+  .guarantee-row > *, .proc-tabs > * { min-width:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; max-width:100%; }
   body{
     margin:0;
     background:var(--white);
@@ -59,6 +66,9 @@
     line-height:1.5;
     font-weight:400;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    max-width:100%;
+    position:relative;
   }
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
