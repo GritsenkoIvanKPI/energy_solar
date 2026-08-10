@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Solar — Сонячні електростанції під ключ</title>
+<meta name="description" content="Проєктування, монтаж та обслуговування сонячних електростанцій для приватних будинків і промислових об'єктів. Власна команда, сертифіковане обладнання, гарантія на монтаж 2 роки.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23122023'/%3E%3Ccircle cx='20' cy='20' r='7' fill='%23E1FCAD'/%3E%3Cg stroke='%23E1FCAD' stroke-width='2.4' stroke-linecap='round'%3E%3Cline x1='20' y1='4' x2='20' y2='9'/%3E%3Cline x1='20' y1='31' x2='20' y2='36'/%3E%3Cline x1='4' y1='20' x2='9' y2='20'/%3E%3Cline x1='31' y1='20' x2='36' y2='20'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E0E0E;
+    --ink-soft:#1b2b2e;
+    --slate:#586867;
+    --slate-soft:#7c8b8a;
+    --linen:#e7e9de;
+    --smoke:#F5F2F1;
+    --porcelain:#ececE6;
+    --white:#FDFBFC;
+    --lime:#80C507;
+    --lime-bright:#93D815;
+    --lime-ink:#0E0E0E;
+    --dark:#0E0E0E;
+    --dark-elevated:#1A1A1A;
+    --dark-floating:#242424;
+    --line-on-dark:rgba(253,251,252,.12);
+    --line-on-light:rgba(14,14,14,.1);
+
+    --container:1200px;
+    --pad:1.25rem;
+    --radius-lg:1.75rem;
+    --radius-md:1.25rem;
+    --radius-sm:.875rem;
+    --radius-pill:100px;
+
+    --gap-3xs:.375rem;
+    --gap-xxs:.5rem;
+    --gap-xs:.75rem;
+    --gap-sm:1rem;
+    --gap-md:1.5rem;
+    --gap-lg:2rem;
+    --gap-xl:3rem;
+    --gap-2xl:4rem;
+    --gap-3xl:6rem;
+
+    --ease: cubic-bezier(.16,.84,.44,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'DM Sans', sans-serif;
+    font-size:1rem;
+    line-height:1.5;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  h1,h2,h3,h4,h5,h6{ margin:0; font-weight:700; letter-spacing:-.02em; line-height:1.08; }
+  p{ margin:0; }
+  section{ position:relative; }
+
+  .wrap{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 var(--pad);
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    font-size:.9rem;
+    font-weight:500;
+    letter-spacing:.01em;
+    color:var(--slate);
+    margin-bottom:1.1rem;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--ink);
+    flex:none;
+  }
+  .on-dark .eyebrow{ color:rgba(253,251,252,.7); }
+  .on-dark .eyebrow::before{ background:var(--lime); }
+
+  .h2{ font-size:clamp(2.1rem,4vw,3.4rem); }
+  .h3{ font-size:clamp(1.8rem,3vw,2.6rem); }
+  .section-head{ max-width:640px; }
+  .section-head.center{ max-width:680px; margin-left:auto; margin-right:auto; text-align:center; }
+  .why .section-head.center{ max-width:820px; }
+  .benefits .section-head h2{ white-space:nowrap; }
+  .lede{ color:var(--slate); font-size:1.05rem; line-height:1.7; margin-top:1.1rem; }
+  .on-dark .lede{ color:rgba(253,251,252,.68); }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+    padding:.95rem 1.7rem;
+    border-radius:var(--radius-pill);
+    font-weight:600;
+    font-size:.98rem;
+    border:1px solid transparent;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--lime);
+    color:var(--lime-ink);
+    box-shadow:0 1px 0 rgba(14,14,14,.05) inset, 0 14px 30px -14px rgba(128,197,7,.55);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(128,197,7,.7); background:var(--lime-bright); }
+  .btn-primary:active{ transform:translateY(0); }
+  .btn-primary:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--white);
+    border-color:rgba(253,251,252,.35);
+  }
+  .btn-ghost:hover{ border-color:var(--lime); color:var(--lime); transform:translateY(-2px); }
+  .btn-ghost:focus-visible{ outline:2px solid var(--lime); outline-offset:3px; }
+
+  .btn-line{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line-on-light);
+  }
+  .btn-line:hover{ border-color:var(--ink); transform:translateY(-2px); }
+  .btn-line:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  .icon{ width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+
+  /* ---------- reveal on scroll ---------- */
+  [data-reveal]{ opacity:0; transform:translateY(22px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+  [data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ================= HEADER ================= */
+  header{
+    position:fixed;
+    top:1.1rem; left:0; right:0;
+    z-index:100;
+    padding:0 var(--pad);
+  }
+  .nav-shell{
+    max-width:var(--container);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--white);
+    border:1px solid rgba(14,14,14,.06);
+    border-radius:var(--radius-pill);
+    padding:.6rem .6rem .6rem 1.3rem;
+    box-shadow:0 20px 44px -26px rgba(14,14,14,.35);
+    transition:box-shadow .4s var(--ease);
+  }
+  body.scrolled .nav-shell{
+    box-shadow:0 24px 50px -22px rgba(14,14,14,.45);
+  }
+  .brand{ display:flex; align-items:center; gap:.6rem; }
+  .brand-logo{ height:34px; width:auto; display:block; }
+
+  .nav-links{ display:flex; align-items:center; gap:2rem; }
+  .nav-links a{ color:var(--slate); font-size:.94rem; font-weight:500; transition:color .3s var(--ease); position:relative; }
+  .nav-links a::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:var(--ink); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ transform:scaleX(1); }
+  .nav-links a:focus-visible{ outline:2px solid var(--ink); outline-offset:4px; border-radius:2px; }
+
+  .nav-cta{ display:flex; align-items:center; gap:.5rem; }
+  .burger{ display:none; width:42px; height:42px; border-radius:50%; background:var(--smoke); border:1px solid rgba(14,14,14,.08); align-items:center; justify-content:center; }
+  .burger svg{ width:18px; height:18px; stroke:var(--ink); }
+
+  .mobile-panel{
+    display:none;
+    position:fixed; inset:5.2rem 1.1rem auto 1.1rem;
+    background:var(--dark-elevated);
+    border:1px solid rgba(253,251,252,.14);
+    border-radius:var(--radius-md);
+    padding:1.2rem;
+    z-index:99;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  }
+  .mobile-panel.open{ display:block; }
+  .mobile-panel a{ display:block; color:rgba(253,251,252,.85); padding:.85rem .3rem; font-weight:500; border-bottom:1px solid rgba(253,251,252,.08); }
+  .mobile-panel a:last-child{ border-bottom:none; }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    padding:8.5rem 0 4rem;
+    overflow:hidden;
+    background:var(--dark);
+  }
+  .hero-media{ position:absolute; inset:0; z-index:0; }
+  .hero-media img{ width:100%; height:100%; object-fit:cover; }
+  .hero-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(to top, rgba(14,14,14,.92) 0%, rgba(14,14,14,.35) 42%, rgba(14,14,14,.15) 62%, rgba(14,14,14,.55) 100%),
+      linear-gradient(to right, rgba(14,14,14,.5) 0%, transparent 40%);
+  }
+  .hero-inner{ position:relative; z-index:1; width:100%; display:flex; flex-direction:column; gap:5.5rem; flex:1; justify-content:flex-end; height:100%; }
+
+  .hero-eyebrow{
+    color:rgba(253,251,252,.85);
+    font-size:.85rem;
+    font-weight:500;
+    letter-spacing:.08em;
+    margin-bottom:1.4rem;
+  }
+  .hero-copy h1{
+    color:var(--white);
+    font-size:clamp(2.4rem,5.6vw,4.4rem);
+    max-width:16ch;
+  }
+  .hero-copy h1 em{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--lime);
+  }
+
+  .hero-bottom-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+
+  .hero-team-card{
+    background:rgba(20,20,20,.55);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(253,251,252,.18);
+    border-radius:var(--radius-pill);
+    padding:.6rem .6rem .6rem 1.2rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+  }
+  .avatar-stack{ display:flex; }
+  .avatar-stack img{
+    width:40px; height:40px; border-radius:50%; object-fit:cover;
+    border:2px solid rgba(20,20,20,.7);
+    margin-left:-12px;
+  }
+  .avatar-stack img:first-child{ margin-left:0; }
+  .hero-team-label{ color:var(--white); font-size:.92rem; font-weight:600; white-space:nowrap; }
+  .hero-team-arrow{
+    width:40px; height:40px; border-radius:50%;
+    background:var(--lime); color:var(--lime-ink);
+    display:flex; align-items:center; justify-content:center;
+    flex:none; margin-left:.3rem;
+    transition:transform .35s var(--ease), background-color .35s var(--ease);
+  }
+  .hero-team-arrow svg{ width:16px; height:16px; }
+  .hero-team-card:hover .hero-team-arrow{ transform:rotate(45deg); background:var(--lime-bright); }
+
+  .hero-side-note{ max-width:30ch; text-align:right; }
+  .hero-side-note p{ color:rgba(253,251,252,.82); font-size:1rem; line-height:1.65; margin-bottom:1.3rem; }
+
+  @keyframes heroDrift{ from{ transform:scale(1); } to{ transform:scale(1.08); } }
+  .hero-media img{ animation:heroDrift 40s linear forwards; transform-origin:center; }
+
+  /* ================= VALUE / SERVICES INTRO ================= */
+  .value{ padding:var(--gap-3xl) 0 var(--gap-2xl); }
+  .value-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:2.6rem; flex-wrap:wrap; }
+  .value-grid{ display:grid; grid-template-columns:1fr 1.15fr 1fr; gap:1.3rem; }
+  .value-card{ border-radius:var(--radius-lg); padding:2.2rem; min-height:390px; display:flex; flex-direction:column; }
+  .value-card.light{ background:var(--linen); color:var(--ink); }
+  .value-card.dark{ background:var(--dark); color:var(--white); }
+  .value-card.photo{ padding:0; overflow:hidden; position:relative; }
+  .value-card.photo img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+  .value-eyebrow{ font-size:.85rem; font-weight:500; opacity:.6; margin-bottom:.9rem; }
+  .value-card h4{ font-size:1.5rem; max-width:16ch; margin-bottom:auto; }
+  .value-foot{ font-size:.85rem; font-weight:500; opacity:.65; padding-top:1.4rem; margin-top:1.4rem; border-top:1px solid currentColor; border-image:none; }
+  .value-card.light .value-foot{ border-color:rgba(14,14,14,.14); }
+  .value-card.dark .value-foot{ border-color:rgba(253,251,252,.16); }
+  .value-card p{ color:var(--slate); line-height:1.7; margin-top:1rem; }
+  .value-card.dark p{ color:rgba(253,251,252,.65); }
+  .value-stat{ font-size:3.4rem; font-weight:800; color:var(--lime); letter-spacing:-.02em; margin-top:auto; }
+  .value-stat + .value-stat-label{ color:rgba(253,251,252,.65); font-size:.95rem; margin-top:.3rem; }
+
+  /* service icon grid */
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.6rem; }
+  .service-item{
+    border:1px solid var(--line-on-light);
+    border-radius:var(--radius-md);
+    padding:1.8rem;
+    background:var(--white);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+  }
+  .service-item:hover{ transform:translateY(-6px); box-shadow:0 30px 50px -30px rgba(14,14,14,.35); border-color:transparent; }
+  .service-icon{ width:48px; height:48px; border-radius:.85rem; background:var(--smoke); display:flex; align-items:center; justify-content:center; margin-bottom:1.4rem; }
+  .service-item h5{ font-size:1.18rem; margin-bottom:.6rem; }
+  .service-item p{ color:var(--slate); font-size:.94rem; line-height:1.65; }
+
+  /* ================= CTA STRIP ================= */
+  .cta-strip{ background:var(--dark); border-radius:var(--radius-lg); padding:3rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+  .cta-strip h3{ color:var(--white); font-size:clamp(1.6rem,3vw,2.2rem); max-width:22ch; }
+  .cta-strip p{ color:rgba(253,251,252,.65); margin-top:.6rem; max-width:40ch; }
+  .cta-wrap{ margin-top:var(--gap-2xl); margin-bottom:var(--gap-2xl); }
+
+  /* ================= BENEFITS ================= */
+  .benefits{ padding:var(--gap-2xl) 0; background:var(--smoke); }
+  .benefits-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:1.3rem; margin-top:2.6rem; }
+  .impact-card{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:520px; }
+  .impact-card img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+  .impact-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(14,14,14,.85), rgba(14,14,14,.05) 55%); }
+  .impact-panel{ position:absolute; left:1.2rem; right:1.2rem; bottom:1.2rem; background:rgba(20,20,20,.55); backdrop-filter:blur(14px); border:1px solid rgba(253,251,252,.14); border-radius:var(--radius-md); padding:1.5rem; z-index:1; }
+  .impact-panel h4{ color:var(--white); font-size:1.3rem; margin-bottom:1rem; }
+  .impact-row{ display:flex; justify-content:space-between; align-items:center; padding:.65rem 0; border-top:1px solid rgba(253,251,252,.14); color:rgba(253,251,252,.85); font-size:.95rem; }
+  .impact-row:first-of-type{ border-top:none; }
+  .impact-row b{ color:var(--lime); font-weight:700; }
+
+  .benefits-side{ display:flex; flex-direction:column; gap:1.3rem; }
+  .b-card{ border-radius:var(--radius-lg); padding:2rem; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .b-card.dark{ background:var(--dark); color:var(--white); }
+  .b-card.line{ background:var(--white); border:1px solid var(--line-on-light); }
+  .b-card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.1rem; }
+  .b-card h5{ font-size:1.3rem; margin-bottom:.6rem; }
+  .b-card p{ color:var(--slate); line-height:1.65; font-size:.96rem; }
+  .b-card.dark p{ color:rgba(253,251,252,.65); }
+  .b-num{ font-weight:700; color:var(--slate-soft); font-size:.95rem; }
+  .b-card.dark .b-num{ color:rgba(253,251,252,.45); }
+
+  .guarantee-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:1.3rem; }
+  .g-item{ background:var(--white); border:1px solid var(--line-on-light); border-radius:var(--radius-md); padding:1.5rem; text-align:left; }
+  .g-item b{ display:block; font-size:2rem; font-weight:800; margin-bottom:.3rem; }
+  .g-item span{ color:var(--slate); font-size:.88rem; }
+
+  /* numbered stacked feature cards (dark) */
+  .why{ padding:var(--gap-2xl) 0; background:var(--dark); color:var(--white); }
+  .why-stack{ display:flex; flex-direction:column; gap:1.3rem; margin-top:2.6rem; }
+  .why-card{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:340px; display:flex; flex-direction:column; justify-content:space-between; padding:2.2rem; }
+  .why-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .why-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(14,14,14,.9) 0%, rgba(14,14,14,.15) 55%, rgba(14,14,14,.45) 100%); z-index:0; }
+  .why-top{ position:relative; z-index:1; display:flex; justify-content:space-between; align-items:flex-start; }
+  .why-top h4{ color:var(--white); font-size:1.7rem; max-width:20ch; }
+  .why-top span{ color:rgba(253,251,252,.55); font-weight:700; font-size:1.1rem; }
+  .why-card p{ position:relative; z-index:1; color:rgba(253,251,252,.82); max-width:52ch; line-height:1.65; }
+
+  /* ================= ABOUT ================= */
+  .about{ padding:var(--gap-3xl) 0; background:var(--dark); color:var(--white); }
+  .about-grid{ display:grid; grid-template-columns:.85fr 1fr; gap:3.2rem; align-items:stretch; }
+  .about-photo{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:640px; }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+  .about-badge{ position:absolute; left:1.1rem; right:1.1rem; bottom:1.1rem; background:rgba(20,20,20,.55); backdrop-filter:blur(14px); border:1px solid rgba(253,251,252,.16); border-radius:var(--radius-md); padding:1.3rem 1.4rem; }
+  .about-badge h5{ color:var(--white); font-size:1.05rem; margin-bottom:.8rem; }
+  .about-badge-row{ display:flex; gap:1.4rem; }
+  .about-badge-row div b{ display:block; color:var(--lime); font-size:1.15rem; font-weight:700; }
+  .about-badge-row div span{ color:rgba(253,251,252,.6); font-size:.78rem; }
+
+  .about-copy p.lede{ font-size:1.25rem; color:rgba(253,251,252,.85); line-height:1.6; max-width:36ch; }
+  .about-copy .btn{ margin-top:2rem; }
+  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:0 2rem; margin-top:2.6rem; padding-top:2.4rem; border-top:1px solid rgba(253,251,252,.14); }
+  .a-stat{ padding:1.1rem 0 1.1rem 1.2rem; border-left:1px solid rgba(128,197,7,.5); margin-bottom:1.2rem; }
+  .a-stat b{ display:block; font-size:2.6rem; font-weight:800; letter-spacing:-.02em; }
+  .a-stat span{ color:rgba(253,251,252,.6); font-size:.92rem; }
+
+  /* ================= PARTNERS ================= */
+  .partners{ padding:var(--gap-2xl) 0; background:var(--white); }
+  .partners-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:.9rem; margin-top:2.4rem; }
+  .partner-chip{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100px;
+    padding:1.2rem 1.5rem;
+    border:1px solid var(--line-on-light);
+    border-radius:var(--radius-sm);
+    background:var(--white);
+    transition:border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .partner-chip:hover{ border-color:rgba(14,14,14,.3); transform:translateY(-3px); box-shadow:0 22px 38px -24px rgba(14,14,14,.3); }
+  .partner-chip img{
+    display:block;
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:42px;
+    filter:grayscale(1) opacity(.6);
+    transition:filter .4s var(--ease);
+  }
+  .partner-chip:hover img{ filter:grayscale(0) opacity(1); }
+  .partner-chip.text{
+    text-align:center;
+    font-weight:700;
+    font-size:.95rem;
+    letter-spacing:.01em;
+    color:var(--slate);
+    transition:color .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .partner-chip.text:hover{ color:var(--ink); border-color:rgba(14,14,14,.3); transform:translateY(-3px); box-shadow:0 22px 38px -24px rgba(14,14,14,.3); }
+
+  /* ================= WORKFLOW (auto-advancing slider) ================= */
+  .workflow{ position:relative; padding:var(--gap-3xl) 0; overflow:hidden; }
+  .workflow-media{ position:absolute; inset:0; }
+  .workflow-media img{ width:100%; height:100%; object-fit:cover; }
+  .workflow-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,14,14,.94), rgba(14,14,14,.92)); }
+  .workflow .wrap{ position:relative; z-index:1; }
+
+  .proc-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; flex-wrap:wrap; margin-bottom:3.4rem; }
+  .proc-eyebrow{ display:inline-flex; align-items:center; gap:.6rem; font-size:.82rem; font-weight:500; letter-spacing:.14em; color:rgba(253,251,252,.55); margin-bottom:1.2rem; text-transform:uppercase; }
+  .proc-eyebrow::before{ content:""; width:16px; height:16px; border-radius:50%; border:1px solid rgba(253,251,252,.4); flex:none; }
+  .proc-title{ color:var(--white); font-size:clamp(2.6rem,6vw,4.6rem); text-transform:uppercase; letter-spacing:-.02em; line-height:.95; }
+  .proc-intro{ color:rgba(253,251,252,.55); font-size:1rem; line-height:1.65; max-width:30ch; text-align:right; }
+
+  .proc-tabs{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.2rem 1.6rem; border-top:1px solid rgba(253,251,252,.12); padding-top:0; }
+  .proc-tab{
+    background:none; border:none; padding:1.3rem 0 .9rem; text-align:left; cursor:pointer;
+    display:flex; flex-direction:column; gap:.35rem; position:relative;
+  }
+  .proc-tab-num{ font-size:.8rem; font-weight:600; color:rgba(253,251,252,.35); transition:color .4s var(--ease); }
+  .proc-tab-label{ font-size:.92rem; font-weight:600; letter-spacing:.02em; text-transform:uppercase; color:rgba(253,251,252,.4); transition:color .4s var(--ease); }
+  .proc-tab-track{ position:absolute; left:0; right:0; bottom:-1px; height:1px; background:rgba(253,251,252,.14); }
+  .proc-tab-fill{ position:absolute; left:0; top:0; height:100%; width:0%; background:var(--lime); transform-origin:left; }
+  .proc-tab.is-past .proc-tab-fill{ width:100%; }
+  .proc-tab.is-active .proc-tab-num,
+  .proc-tab.is-active .proc-tab-label{ color:var(--white); }
+  .proc-tab.is-past .proc-tab-num,
+  .proc-tab.is-past .proc-tab-label{ color:rgba(253,251,252,.65); }
+  .proc-tab.is-active .proc-tab-fill{ width:0%; animation:procFill 6s linear forwards; }
+  .proc-tab:hover .proc-tab-label{ color:var(--white); }
+  .proc-tab:focus-visible{ outline:2px solid var(--lime); outline-offset:4px; }
+  @keyframes procFill{ from{ width:0%; } to{ width:100%; } }
+
+  .proc-panel{ position:relative; min-height:280px; margin-top:3rem; }
+  .proc-panel-item{ display:none; }
+  .proc-panel-item.is-active{ display:block; animation:procFade .6s var(--ease); }
+  @keyframes procFade{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .proc-panel-day{ display:block; font-size:.82rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(253,251,252,.45); margin-bottom:1rem; }
+  .proc-panel-title{ color:var(--white); font-size:clamp(1.9rem,3.4vw,2.8rem); max-width:16ch; margin-bottom:1.2rem; }
+  .proc-panel-desc{ color:rgba(253,251,252,.62); font-size:1.05rem; line-height:1.7; max-width:52ch; }
+  .proc-bignum{
+    position:absolute; right:0; bottom:-1rem; z-index:0;
+    font-size:clamp(6rem,14vw,11rem); font-weight:800; line-height:1;
+    color:transparent; -webkit-text-stroke:1px rgba(253,251,252,.14);
+    pointer-events:none; user-select:none;
+  }
+
+  .proc-nav{ display:flex; align-items:center; gap:1.8rem; margin-top:2.6rem; }
+  .proc-nav button{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:none; border:none; cursor:pointer;
+    font-size:.85rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:rgba(253,251,252,.5); transition:color .3s var(--ease);
+  }
+  .proc-nav button:hover{ color:var(--white); }
+  .proc-nav button svg{ width:15px; height:15px; transition:transform .3s var(--ease); }
+  .proc-nav button:hover .icon-prev{ transform:translateX(-3px); }
+  .proc-nav button:hover .icon-next{ transform:translateX(3px); }
+  .proc-nav button:focus-visible{ outline:2px solid var(--lime); outline-offset:3px; }
+
+  /* ================= TESTIMONIALS ================= */
+  .testi{ padding:var(--gap-3xl) 0; background:var(--smoke); }
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.6rem; }
+  .testi-card{ background:var(--white); border:1px solid var(--line-on-light); border-radius:var(--radius-lg); padding:2rem; display:flex; flex-direction:column; gap:1.3rem; }
+  .testi-stars{ display:flex; gap:.25rem; color:var(--lime-ink); }
+  .testi-stars svg{ width:16px; height:16px; fill:#c9a92c; stroke:none; }
+  .testi-card p{ color:var(--ink); line-height:1.7; font-size:1rem; }
+  .testi-person{ display:flex; align-items:center; gap:.8rem; margin-top:auto; }
+  .testi-avatar{ width:44px; height:44px; border-radius:50%; background:var(--dark); color:var(--lime); display:flex; align-items:center; justify-content:center; font-weight:700; flex:none; }
+  .testi-person b{ display:block; font-size:.92rem; }
+  .testi-person span{ color:var(--slate); font-size:.82rem; }
+
+  .testi-video-row{ display:flex; gap:1rem; margin-top:1.8rem; flex-wrap:wrap; }
+  .testi-video-link{ display:inline-flex; align-items:center; gap:.6rem; border:1px solid var(--line-on-light); border-radius:var(--radius-pill); padding:.75rem 1.3rem; font-weight:600; font-size:.9rem; transition:border-color .3s var(--ease), transform .3s var(--ease); }
+  .testi-video-link:hover{ border-color:var(--ink); transform:translateY(-2px); }
+  .testi-video-link svg{ width:16px; height:16px; }
+
+  /* ================= FAQ ================= */
+  .faq{ padding:var(--gap-3xl) 0; background:var(--white); }
+  .faq-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; }
+  .faq-list{ display:flex; flex-direction:column; gap:.8rem; }
+  .faq-item{ border:1px solid var(--line-on-light); border-radius:var(--radius-md); padding:.3rem 1.5rem; transition:border-color .3s var(--ease), background-color .3s var(--ease); }
+  .faq-item[open]{ background:var(--smoke); border-color:transparent; }
+  .faq-item summary{ list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.35rem 0; cursor:pointer; font-weight:600; font-size:1.02rem; }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-plus{ width:26px; height:26px; border-radius:50%; border:1px solid var(--line-on-light); flex:none; position:relative; transition:transform .4s var(--ease), border-color .3s var(--ease); }
+  .faq-plus::before, .faq-plus::after{ content:""; position:absolute; background:var(--ink); top:50%; left:50%; }
+  .faq-plus::before{ width:10px; height:1.4px; transform:translate(-50%,-50%); }
+  .faq-plus::after{ width:1.4px; height:10px; transform:translate(-50%,-50%); transition:opacity .3s var(--ease); }
+  .faq-item[open] .faq-plus{ transform:rotate(45deg); border-color:var(--ink); }
+  .faq-item p{ color:var(--slate); line-height:1.7; padding-bottom:1.4rem; font-size:.95rem; }
+
+  /* ================= FEEDBACK FORM ================= */
+  .form-sect{ padding:var(--gap-3xl) 0; background:var(--dark); color:var(--white); }
+  .form-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; align-items:start; }
+  .form-note{ display:flex; flex-direction:column; gap:1.4rem; margin-top:1.6rem; }
+  .form-note-item{ display:flex; gap:1rem; align-items:flex-start; }
+  .form-note-item .icon-wrap{ width:42px; height:42px; border-radius:.8rem; background:rgba(128,197,7,.1); display:flex; align-items:center; justify-content:center; flex:none; }
+  .form-note-item .icon-wrap svg{ stroke:var(--lime); width:20px; height:20px; }
+  .form-note-item b{ display:block; font-size:.95rem; margin-bottom:.2rem; }
+  .form-note-item span{ color:rgba(253,251,252,.6); font-size:.86rem; }
+
+  .form-card{ background:var(--dark-elevated); border:1px solid rgba(253,251,252,.12); border-radius:var(--radius-lg); padding:2.4rem; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .field{ margin-bottom:1.1rem; }
+  .field label{ display:block; font-size:.85rem; color:rgba(253,251,252,.6); margin-bottom:.5rem; }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:rgba(253,251,252,.05);
+    border:1px solid rgba(253,251,252,.16);
+    border-radius:.7rem;
+    padding:.85rem 1rem;
+    color:var(--white);
+    font-family:inherit;
+    font-size:.95rem;
+    transition:border-color .3s var(--ease), background-color .3s var(--ease);
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:rgba(253,251,252,.35); }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--lime); background:rgba(253,251,252,.08); }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .field select{ appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23e1fcad' stroke-width='1.6'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; }
+  .form-submit{ width:100%; margin-top:.4rem; padding:1rem; }
+  .form-success{ display:none; align-items:center; gap:.7rem; margin-top:1.1rem; color:var(--lime); font-size:.9rem; font-weight:500; }
+  .form-success.show{ display:flex; }
+  .form-success svg{ width:18px; height:18px; }
+
+  /* ================= CONTACT ================= */
+  .contact{ padding:var(--gap-2xl) 0 var(--gap-3xl); background:var(--dark); color:var(--white); }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; margin-top:2.6rem; }
+  .contact-card{ background:var(--dark-elevated); border:1px solid rgba(253,251,252,.12); border-radius:var(--radius-lg); padding:2rem; display:flex; flex-direction:column; gap:1.4rem; }
+  .contact-line{ display:flex; align-items:center; gap:1rem; }
+  .contact-line .icon-wrap{ width:44px; height:44px; border-radius:50%; background:rgba(128,197,7,.1); display:flex; align-items:center; justify-content:center; flex:none; }
+  .contact-line .icon-wrap svg{ stroke:var(--lime); width:19px; height:19px; }
+  .contact-line b{ display:block; font-size:1rem; }
+  .contact-line span{ color:rgba(253,251,252,.55); font-size:.82rem; }
+  .contact-line a:hover b{ color:var(--lime); }
+  .map-frame{
+    position:relative;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    border:1px solid rgba(253,251,252,.12);
+    min-height:340px;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(128,197,7,.1), transparent 55%),
+      var(--dark-elevated);
+  }
+  .map-grid{ position:absolute; inset:0; opacity:.5; }
+  .map-grid svg{ width:100%; height:100%; }
+  .map-pin{ position:absolute; top:44%; left:46%; display:flex; flex-direction:column; align-items:center; }
+  .map-pin-dot{ width:16px; height:16px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 6px rgba(128,197,7,.18); }
+  .map-pin-ring{ position:absolute; top:50%; left:50%; width:70px; height:70px; margin:-35px 0 0 -35px; border-radius:50%; border:1px solid rgba(128,197,7,.35); animation:ping 2.8s var(--ease) infinite; }
+  .map-pin-ring.delay{ animation-delay:1.4s; }
+  @keyframes ping{ 0%{ transform:scale(.3); opacity:.9; } 100%{ transform:scale(1.7); opacity:0; } }
+  .map-label{ position:absolute; left:1.6rem; bottom:1.6rem; }
+  .map-label b{ display:block; color:var(--white); font-size:1.05rem; }
+  .map-label span{ color:rgba(253,251,252,.55); font-size:.85rem; }
+  @media (prefers-reduced-motion: reduce){ .map-pin-ring{ animation:none; } }
+
+  /* ================= FOOTER ================= */
+  footer{ background:var(--ink); color:rgba(253,251,252,.6); padding:2.4rem 0; }
+  .foot-grid{ display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+  .foot-brand{ display:flex; align-items:center; gap:.6rem; }
+  .foot-links{ display:flex; gap:1.6rem; flex-wrap:wrap; }
+  .foot-links a{ font-size:.88rem; transition:color .3s var(--ease); }
+  .foot-links a:hover{ color:var(--lime); }
+  .foot-social{ display:flex; gap:.6rem; }
+  .foot-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(253,251,252,.16); display:flex; align-items:center; justify-content:center; transition:border-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease); }
+  .foot-social a:hover{ border-color:var(--lime); color:var(--lime); transform:translateY(-2px); }
+  .foot-social svg{ width:16px; height:16px; }
+  .foot-bottom{ margin-top:2rem; padding-top:1.6rem; border-top:1px solid rgba(253,251,252,.1); font-size:.8rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:980px){
+    .nav-links{ display:none; }
+    .nav-cta .btn-primary{ display:none; }
+    .burger{ display:flex; }
+    .hero{ padding-top:7.5rem; align-items:stretch; }
+    .hero-inner{ gap:2.2rem; }
+    .hero-bottom-row{ flex-direction:column; align-items:flex-start; gap:1.6rem; min-width:0; }
+    .hero-side-note{ max-width:none; text-align:left; width:100%; min-width:0; }
+    .value-grid{ grid-template-columns:1fr; }
+    .value-card{ min-height:280px; }
+    .services-grid{ grid-template-columns:1fr 1fr; }
+    .benefits-grid{ grid-template-columns:1fr; }
+    .impact-card{ min-height:400px; }
+    .about-grid{ grid-template-columns:1fr; }
+    .about-photo{ min-height:420px; }
+    .about-stats{ grid-template-columns:1fr 1fr; }
+    .partners-grid{ grid-template-columns:repeat(3,1fr); }
+    .testi-grid{ grid-template-columns:1fr; }
+    .faq-grid{ grid-template-columns:1fr; gap:2rem; }
+    .form-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .cta-strip{ padding:2.2rem; flex-direction:column; align-items:flex-start; }
+    .proc-head{ flex-direction:column; align-items:flex-start; }
+    .proc-intro{ text-align:left; max-width:none; }
+  }
+  @media (max-width:640px){
+    .wrap{ padding:0 1rem; }
+    .value-head{ flex-direction:column; align-items:flex-start; }
+    .services-grid{ grid-template-columns:1fr; }
+    .guarantee-row{ grid-template-columns:1fr 1fr; }
+    .about-stats{ grid-template-columns:1fr; }
+    .partners-grid{ grid-template-columns:repeat(2,1fr); }
+    .form-row{ grid-template-columns:1fr; }
+    .foot-grid{ flex-direction:column; align-items:flex-start; }
+    .hero-team-card{ width:100%; }
+    .benefits .section-head h2{ white-space:normal; }
+    .proc-tabs{ grid-template-columns:repeat(2,1fr); gap:1.8rem 1.2rem; }
+    .proc-bignum{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ICON DEFS (reused inline) ============ -->
+
+<header id="siteHeader">
+  <div class="nav-shell">
+    <a href="#top" class="brand">
+      <img src="images/logo-dark.svg" alt="Energy Solar" class="brand-logo">
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Послуги</a>
+      <a href="#benefits">Переваги</a>
+      <a href="#about">Про нас</a>
+      <a href="#process">Процес</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Контакти</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#form" class="btn btn-primary">Залишити заявку</a>
+      <button class="burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#services">Послуги</a>
+    <a href="#benefits">Переваги</a>
+    <a href="#about">Про нас</a>
+    <a href="#partners">Партнери</a>
+    <a href="#process">Процес</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Контакти</a>
+    <a href="#form" style="color:#80C507;">Залишити заявку →</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia"><img src="images/hero-bg.jpg" alt="Монтажник Energy Solar готує сонячну панель до встановлення"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy" data-reveal>
+      <div class="hero-eyebrow">[ Сонячні рішення під ключ ]</div>
+      <h1>Одне рішення для<br>чистого <em>майбутнього</em></h1>
+    </div>
+
+    <div class="hero-bottom-row" data-reveal>
+      <div class="hero-team-card">
+        <div class="avatar-stack">
+          <img src="images/avatar-1.jpg" alt="Інженер команди Energy Solar">
+          <img src="images/avatar-2.jpg" alt="Інженерка команди Energy Solar">
+          <img src="images/avatar-3.jpg" alt="Монтажник команди Energy Solar">
+        </div>
+        <span class="hero-team-label">Поговорити з командою</span>
+        <a href="#contact" class="hero-team-arrow" aria-label="Перейти до контактів">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-side-note">
+        <p>Проєктуємо та монтуємо сонячні електростанції власною командою — без субпідряду та посередників, під ключ.</p>
+        <a href="#form" class="btn btn-primary">Отримати консультацію</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES / VALUE ============ -->
+<section class="value" id="services">
+  <div class="wrap">
+    <div class="value-head" data-reveal>
+      <div>
+        <div class="eyebrow">Наші послуги</div>
+        <h2 class="h2">Повний цикл сонячної<br>енергетики під ключ</h2>
+      </div>
+      <p class="lede" style="max-width:32ch;margin-top:0;">Від проєктування до пусконалагодження та сервісу — тільки власна команда інженерів і монтажників, без субпідряду.</p>
+    </div>
+
+    <div class="value-grid" data-reveal>
+      <div class="value-card light">
+        <div class="value-eyebrow">Приватним будинкам</div>
+        <h4>Мережеві, гібридні та автономні станції</h4>
+        <p>Рішення під будь-який бюджет — від базового резервного живлення до повної енергонезалежності.</p>
+        <div class="value-foot">Резервне живлення // Зелений тариф</div>
+      </div>
+      <div class="value-card photo">
+        <img src="images/value-card.jpg" alt="Наземна сонячна електростанція вздовж річки">
+      </div>
+      <div class="value-card dark">
+        <div class="value-eyebrow">Бізнесу та промисловості</div>
+        <h4>Комерційні СЕС для скорочення витрат</h4>
+        <div class="value-stat">90%</div>
+        <div class="value-stat-label">Економія на електроенергії для бізнесу</div>
+        <div class="value-foot">Держпрограми // Кредитування</div>
+      </div>
+    </div>
+
+    <div class="services-grid" data-reveal>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
+        </div>
+        <h5>Проєктування СЕС</h5>
+        <p>Технічно-комерційна пропозиція та проєкт системи під ваше споживання електроенергії.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </div>
+        <h5>Монтаж на будь-якому даху</h5>
+        <p>Керамічна черепиця, металочерепиця, бітумна черепиця, профнастил — рішення під кожен тип покрівлі.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V10l6-4 6 4v10"/><path d="M10 20v-6h4v6"/></svg>
+        </div>
+        <h5>Наземні конструкції</h5>
+        <p>Монтаж наземних систем будь-якої складності для приватних та промислових ділянок.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </div>
+        <h5>Зелений тариф</h5>
+        <p>Супроводжуємо оформлення продажу електроенергії за зеленим тарифом під ключ.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M5 9h14l-1.5 11h-11L5 9z"/><path d="M9 13h6"/></svg>
+        </div>
+        <h5>Держпрограми і кредитування</h5>
+        <p>Допомагаємо оформити державні програми кредитування та компенсації для фізосіб і бізнесу.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8v4l3 2"/></svg>
+        </div>
+        <h5>Післямонтажний сервіс</h5>
+        <p>Моніторинг, обслуговування та підтримка станції протягом усього гарантійного терміну.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA 1 ============ -->
+<div class="wrap cta-wrap">
+  <div class="cta-strip" data-reveal>
+    <div>
+      <h3>Станьте енергонезалежними</h3>
+      <p>Зменшіть витрати на електроенергію. Захистіть від росту тарифів ваш бізнес.</p>
+    </div>
+    <a href="#form" class="btn btn-primary">Розрахувати економію</a>
+  </div>
+</div>
+
+<!-- ============ BENEFITS ============ -->
+<section class="benefits" id="benefits">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Наші показники</div>
+      <h2 class="h2">Чому обирають Energy Solar</h2>
+    </div>
+
+    <div class="benefits-grid" data-reveal>
+      <div class="impact-card">
+        <img src="images/feature-01.jpg" alt="Сонячна станція серед туманних пагорбів">
+        <div class="impact-panel">
+          <h4>Наш досвід у цифрах</h4>
+          <div class="impact-row"><span>Років на ринку</span><b>4 роки</b></div>
+          <div class="impact-row"><span>Реалізованих проєктів</span><b>500+</b></div>
+          <div class="impact-row"><span>Термін виконання</span><b>10 днів</b></div>
+        </div>
+      </div>
+      <div class="benefits-side">
+        <div class="b-card dark">
+          <div class="b-card-top"><span class="b-num">01</span></div>
+          <h5>Від дзвінка до готового рішення — 10 днів</h5>
+          <p>Гнучкі пропозиції для приватного будинку та бізнесу під будь-який бюджет.</p>
+        </div>
+        <div class="b-card line">
+          <div class="b-card-top"><span class="b-num">02</span></div>
+          <h5>Власна команда без субпідряду</h5>
+          <p>Проєктувальники, інженери та монтажні бригади — у штаті. Контроль якості на кожному етапі, без посередників.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="guarantee-row" data-reveal>
+      <div class="g-item"><b>2 роки</b><span>Гарантія на монтажні роботи</span></div>
+      <div class="g-item"><b>10 років</b><span>Гарантія на інвертор</span></div>
+      <div class="g-item"><b>5 років</b><span>Гарантія на акумулятори</span></div>
+      <div class="g-item"><b>30 років</b><span>Гарантія на сонячні панелі</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US (numbered dark cards) ============ -->
+<section class="why">
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <div class="eyebrow">Наш підхід</div>
+      <h2 class="h2">Якісна СЕС за<br>європейськими стандартами</h2>
+    </div>
+    <div class="why-stack" data-reveal>
+      <div class="why-card">
+        <img src="images/feature-01.jpg" alt="Монтаж СЕС за європейськими стандартами">
+        <div class="why-top"><h4>Європейські стандарти монтажу</h4><span>01</span></div>
+        <p>Виконуємо роботи відповідно до європейських стандартів на сертифікованому обладнанні світових виробників.</p>
+      </div>
+      <div class="why-card">
+        <img src="images/feature-02.jpg" alt="Сертифіковане обладнання світових виробників">
+        <div class="why-top"><h4>Сертифіковане обладнання</h4><span>02</span></div>
+        <p>Працюємо з офіційними імпортерами й авторизованими постачальниками — з офіційною гарантією виробника.</p>
+      </div>
+      <div class="why-card">
+        <img src="images/feature-03.jpg" alt="Післямонтажний супровід та сервіс">
+        <div class="why-top"><h4>Післямонтажний супровід</h4><span>03</span></div>
+        <p>Моніторинг, сервіс та підтримка після монтажу — станція під наглядом протягом усього терміну гарантії.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo" data-reveal>
+      <img src="images/about-portrait.jpg" alt="Інженер Energy Solar монтує сонячну панель на даху">
+      <div class="about-badge">
+        <h5>Energy Solar</h5>
+        <div class="about-badge-row">
+          <div><b>10 днів</b><span>від заявки до пуску станції</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-copy on-dark" data-reveal>
+      <div class="eyebrow">Про компанію</div>
+      <p class="lede">Ми — команда проєктувальників, інженерів та монтажних бригад, що будує сонячні електростанції по всій Україні власними силами, без субпідряду та посередників.</p>
+      <p style="color:rgba(253,251,252,.6);margin-top:1.4rem;max-width:52ch;line-height:1.7;">Від проєктування до готової СЕС — тільки власна команда спеціалістів, що гарантує контроль якості на кожному етапі роботи. Працюємо в Києві, Київській області та по всій Україні.</p>
+      <a href="#contact" class="btn btn-primary">Зв'язатись з нами</a>
+
+      <div class="about-stats">
+        <div class="a-stat"><b>500+</b><span>Реалізованих проєктів</span></div>
+        <div class="a-stat"><b>4</b><span>Роки на ринку</span></div>
+        <div class="a-stat"><b>99%</b><span>Економія для приватних будинків</span></div>
+        <div class="a-stat"><b>3–6</b><span>Років середня окупність</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="partners" id="partners">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Партнери</div>
+      <h2 class="h2">Тільки офіційне обладнання<br>світових виробників</h2>
+      <p class="lede">Співпрацюємо з офіційними імпортерами та авторизованими постачальниками, що дозволяє надавати офіційну гарантію виробника та сервісне обслуговування.</p>
+    </div>
+    <div class="partners-grid" data-reveal>
+      <div class="partner-chip"><img src="images/partners/deye.png" alt="Deye"></div>
+      <div class="partner-chip"><img src="images/partners/sigenergy.png" alt="Sigenergy"></div>
+      <div class="partner-chip"><img src="images/partners/ecoflow.png" alt="Ecoflow"></div>
+      <div class="partner-chip"><img src="images/partners/bluetti.png" alt="Bluetti"></div>
+      <div class="partner-chip"><img src="images/partners/sungrow.png" alt="Sungrow"></div>
+      <div class="partner-chip"><img src="images/partners/sl-rack.png" alt="SL Rack"></div>
+      <div class="partner-chip"><img src="images/partners/aiko.png" alt="Aiko Solar"></div>
+      <div class="partner-chip"><img src="images/partners/byd.png" alt="BYD"></div>
+      <div class="partner-chip"><img src="images/partners/pylontech.png" alt="Pylontech"></div>
+      <div class="partner-chip"><img src="images/partners/victron.png" alt="Victron Energy"></div>
+      <div class="partner-chip"><img src="images/partners/trina.png" alt="Trina Solar"></div>
+      <div class="partner-chip"><img src="images/partners/ja-solar.png" alt="JA Solar"></div>
+      <div class="partner-chip"><img src="images/partners/longi.png" alt="Longi Solar"></div>
+      <div class="partner-chip"><img src="images/partners/solis.png" alt="Solis"></div>
+      <div class="partner-chip"><img src="images/partners/sma.png" alt="SMA"></div>
+      <div class="partner-chip"><img src="images/partners/jinko.png" alt="Jinko Solar"></div>
+      <div class="partner-chip"><img src="images/partners/canadian.png" alt="Canadian Solar"></div>
+      <div class="partner-chip text">Risen Energy</div>
+      <div class="partner-chip"><img src="images/partners/astronergy.png" alt="Astronergy"></div>
+      <div class="partner-chip"><img src="images/partners/dyness.png" alt="Dyness"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA 2 ============ -->
+<div class="wrap cta-wrap">
+  <div class="cta-strip" data-reveal>
+    <div>
+      <h3>Залиште запит на консультацію</h3>
+      <p>Прорахунок, консультація або комерційна пропозиція — відповімо протягом робочого дня.</p>
+    </div>
+    <a href="tel:+380733019362" class="btn btn-primary">+380 (73) 301 93 62</a>
+  </div>
+</div>
+
+<!-- ============ WORKFLOW ============ -->
+<section class="workflow" id="process">
+  <div class="workflow-media"><img src="images/workflow-bg.jpg" alt="Панорама сонячної станції у сутінках"></div>
+  <div class="wrap">
+    <div class="proc-head" data-reveal>
+      <div>
+        <div class="proc-eyebrow">Як ми працюємо</div>
+        <h2 class="proc-title">Процес</h2>
+      </div>
+      <p class="proc-intro">Чіткий шлях від першого дзвінка до готової сонячної електростанції — 10 днів.</p>
+    </div>
+
+    <div class="proc-tabs" id="procTabs" data-reveal role="tablist">
+      <button class="proc-tab" data-index="0" role="tab" aria-selected="true">
+        <span class="proc-tab-num">01</span><span class="proc-tab-label">Заявка</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="1" role="tab" aria-selected="false">
+        <span class="proc-tab-num">02</span><span class="proc-tab-label">Аналіз</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="2" role="tab" aria-selected="false">
+        <span class="proc-tab-num">03</span><span class="proc-tab-label">Проєкт</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="3" role="tab" aria-selected="false">
+        <span class="proc-tab-num">04</span><span class="proc-tab-label">Договір</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="4" role="tab" aria-selected="false">
+        <span class="proc-tab-num">05</span><span class="proc-tab-label">Постачання</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="5" role="tab" aria-selected="false">
+        <span class="proc-tab-num">06</span><span class="proc-tab-label">Монтаж</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="6" role="tab" aria-selected="false">
+        <span class="proc-tab-num">07</span><span class="proc-tab-label">Підключення</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+      <button class="proc-tab" data-index="7" role="tab" aria-selected="false">
+        <span class="proc-tab-num">08</span><span class="proc-tab-label">Гарантія</span>
+        <span class="proc-tab-track"><span class="proc-tab-fill"></span></span>
+      </button>
+    </div>
+
+    <div class="proc-panel" id="procPanel" data-reveal>
+      <div class="proc-panel-item is-active" data-index="0">
+        <span class="proc-panel-day">День 1</span>
+        <h3 class="proc-panel-title">Заявка та консультація</h3>
+        <p class="proc-panel-desc">Приймаємо заявку та проводимо первинну консультацію, щоб зрозуміти ваші потреби, об'єкт і бюджет.</p>
+      </div>
+      <div class="proc-panel-item" data-index="1">
+        <span class="proc-panel-day">День 1–2</span>
+        <h3 class="proc-panel-title">Аналіз та виїзд інженера</h3>
+        <p class="proc-panel-desc">Аналізуємо ваше споживання електроенергії та виїжджаємо інженером на об'єкт для технічного огляду.</p>
+      </div>
+      <div class="proc-panel-item" data-index="2">
+        <span class="proc-panel-day">День 2–3</span>
+        <h3 class="proc-panel-title">Пропозиція та проєктування</h3>
+        <p class="proc-panel-desc">Готуємо техніко-комерційну пропозицію та проєктуємо систему під ваше споживання та бюджет.</p>
+      </div>
+      <div class="proc-panel-item" data-index="3">
+        <span class="proc-panel-day">День 3–4</span>
+        <h3 class="proc-panel-title">Обладнання та договір</h3>
+        <p class="proc-panel-desc">Підбираємо оптимальне сертифіковане обладнання та підписуємо договір з фіксованими умовами.</p>
+      </div>
+      <div class="proc-panel-item" data-index="4">
+        <span class="proc-panel-day">День 4–6</span>
+        <h3 class="proc-panel-title">Постачання обладнання</h3>
+        <p class="proc-panel-desc">Замовляємо та доставляємо інвертор, сонячні панелі й акумулятори безпосередньо на об'єкт.</p>
+      </div>
+      <div class="proc-panel-item" data-index="5">
+        <span class="proc-panel-day">День 6–8</span>
+        <h3 class="proc-panel-title">Монтаж та пусконалагодження</h3>
+        <p class="proc-panel-desc">Монтуємо конструкції та обладнання власною бригадою, проводимо пусконалагоджувальні роботи.</p>
+      </div>
+      <div class="proc-panel-item" data-index="6">
+        <span class="proc-panel-day">День 8–9</span>
+        <h3 class="proc-panel-title">Підключення та документація</h3>
+        <p class="proc-panel-desc">Підключаємо станцію, налаштовуємо моніторинг та оформлюємо необхідну документацію.</p>
+      </div>
+      <div class="proc-panel-item" data-index="7">
+        <span class="proc-panel-day">День 9–10</span>
+        <h3 class="proc-panel-title">Навчання та гарантія</h3>
+        <p class="proc-panel-desc">Навчаємо вас користуватись системою та надаємо гарантійне і післягарантійне обслуговування.</p>
+      </div>
+      <div class="proc-bignum" id="procBignum" aria-hidden="true">01</div>
+    </div>
+
+    <div class="proc-nav">
+      <button type="button" id="procPrev">
+        <svg class="icon-prev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+        Попередній
+      </button>
+      <button type="button" id="procNext">
+        Наступний
+        <svg class="icon-next" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testi">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Відгуки</div>
+      <h2 class="h2">Нам довіряють приватні клієнти та бізнес</h2>
+    </div>
+    <div class="testi-grid" data-reveal>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+        </div>
+        <p>«Від заявки до пуску станції минуло рівно стільки, скільки обіцяли. Своя бригада, жодних субпідрядників — і це відчутно по якості монтажу».</p>
+        <div class="testi-person">
+          <div class="testi-avatar">ОК</div>
+          <div><b>Олександр К.</b><span>Приватний будинок, Київська обл.</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+        </div>
+        <p>«Виробничі витрати на електроенергію скоротились суттєво вже з першого місяця. Інженери допомогли з усією документацією для зеленого тарифу».</p>
+        <div class="testi-person">
+          <div class="testi-avatar">ТП</div>
+          <div><b>ТОВ «Промресурс»</b><span>Виробниче підприємство, Київ</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>
+        </div>
+        <p>«Станція працює і під час відключень — саме те, що ми шукали. Гарантія та сервісне обслуговування дають спокій на роки вперед».</p>
+        <div class="testi-person">
+          <div class="testi-avatar">МІ</div>
+          <div><b>Марина І.</b><span>Приватний будинок, Київ</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-video-row" data-reveal>
+      <a class="testi-video-link" href="https://vt.tiktok.com/ZS4hmgtqn/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3h3.2c.2 1.7 1.4 3 3.3 3.2v3.1c-1.2 0-2.3-.4-3.2-1v6.4a4.7 4.7 0 11-4.7-4.7c.3 0 .5 0 .8.1v3.2a1.6 1.6 0 101.1 1.5V3z"/></svg>
+        Відео-відгук у TikTok
+      </a>
+      <a class="testi-video-link" href="https://vt.tiktok.com/ZS4hmbaqu/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3h3.2c.2 1.7 1.4 3 3.3 3.2v3.1c-1.2 0-2.3-.4-3.2-1v6.4a4.7 4.7 0 11-4.7-4.7c.3 0 .5 0 .8.1v3.2a1.6 1.6 0 101.1 1.5V3z"/></svg>
+        Ще один кейс на TikTok
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">FAQ</div>
+      <h2 class="h3">Питання, які<br>ставлять найчастіше</h2>
+      <p class="lede">Не знайшли відповідь? Залиште заявку — проконсультуємо безкоштовно.</p>
+      <a href="#form" class="btn btn-line" style="margin-top:1.6rem;">Задати своє питання</a>
+    </div>
+    <div class="faq-list" data-reveal>
+      <details class="faq-item" open>
+        <summary>Скільки коштує сонячна електростанція?<span class="faq-plus"></span></summary>
+        <p>Вартість залежить від потужності, типу станції та обладнання. Проводимо безкоштовний аналіз споживання та готуємо точну техніко-комерційну пропозицію.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Яка потужність потрібна саме мені?<span class="faq-plus"></span></summary>
+        <p>Інженер аналізує ваше фактичне споживання електроенергії та підбирає оптимальну потужність станції під ваші потреби та бюджет.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Як скоро приступите до монтажу і скільки він триває?<span class="faq-plus"></span></summary>
+        <p>Від першого дзвінка до готової станції — в середньому 10 днів, залежно від складності об'єкта та наявності обладнання.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чи працюватиме станція під час відключень світла?<span class="faq-plus"></span></summary>
+        <p>Так, гібридні та автономні станції з накопичувачем забезпечують живлення й під час відключень мережі.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чи маєте trade-in інвертори?<span class="faq-plus"></span></summary>
+        <p>Так, можемо обміняти ваш поточний інвертор на потужніший з доплатою — розглянемо варіант на консультації.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чи можна встановлювати взимку?<span class="faq-plus"></span></summary>
+        <p>Так, монтаж виконуємо цілорічно — сезон не впливає на якість встановлення конструкцій та обладнання.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Які гарантії ви надаєте?<span class="faq-plus"></span></summary>
+        <p>Гарантія на монтажні роботи — 2 роки, на інвертор — 10 років, на акумулятори — 5 років, на сонячні панелі — до 30 років.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чи допомагаєте з держпрограмами та зеленим тарифом?<span class="faq-plus"></span></summary>
+        <p>Так, супроводжуємо клієнта в оформленні дозволів, підключенні до зеленого тарифу та державних програм кредитування й компенсації.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEEDBACK FORM ============ -->
+<section class="form-sect" id="form">
+  <div class="wrap form-grid">
+    <div data-reveal>
+      <div class="eyebrow on-dark">Заявка</div>
+      <h2 class="h2">Залиште запит на консультацію</h2>
+      <p class="lede">Розрахунок вартості, консультація або комерційна пропозиція — просто заповніть форму.</p>
+      <div class="form-note">
+        <div class="form-note-item">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8v4l3 2"/></svg></span>
+          <div><b>Відповідаємо швидко</b><span>Протягом робочого дня</span></div>
+        </div>
+        <div class="form-note-item">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><b>Без зобов'язань</b><span>Безкоштовна консультація та прорахунок</span></div>
+        </div>
+      </div>
+    </div>
+    <form class="form-card" id="leadForm" data-reveal>
+      <div class="form-row">
+        <div class="field">
+          <label for="fName">Ім'я</label>
+          <input id="fName" type="text" placeholder="Ваше ім'я" required>
+        </div>
+        <div class="field">
+          <label for="fPhone">Телефон</label>
+          <input id="fPhone" type="tel" placeholder="+380" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="fEmail">Email</label>
+          <input id="fEmail" type="email" placeholder="you@mail.com">
+        </div>
+        <div class="field">
+          <label for="fType">Тип об'єкта</label>
+          <select id="fType">
+            <option>Приватний будинок</option>
+            <option>Бізнес / промисловий об'єкт</option>
+            <option>Ще не визначився(лась)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fMsg">Повідомлення</label>
+        <textarea id="fMsg" placeholder="Розкажіть коротко про об'єкт та потреби"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Надіслати заявку</button>
+      <div class="form-success" id="formSuccess">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 10.3l2.4 2.4 4.8-5"/></svg>
+        Дякуємо! Ми зв'яжемось з вами найближчим часом.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow on-dark">Контакти</div>
+      <h2 class="h2">Зв'яжіться з нами<br>будь-яким зручним способом</h2>
+    </div>
+    <div class="contact-grid" data-reveal>
+      <div class="contact-card">
+        <a class="contact-line" href="tel:+380733019362">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5c0 8.8 6.2 15 15 15l2-4-5-2-2 2c-2.5-1.2-4.5-3.2-5.7-5.7l2-2-2-5-4 1z"/></svg></span>
+          <div><b>+380 (73) 301 93 62</b><span>Телефонуйте щодня</span></div>
+        </a>
+        <a class="contact-line" href="https://t.me/NRGsolar" target="_blank" rel="noopener">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M22 3L2.5 10.6l6 2.2M22 3L14.5 21l-5.8-8.2M22 3l-13.3 12"/></svg></span>
+          <div><b>@NRGsolar</b><span>Telegram</span></div>
+        </a>
+        <a class="contact-line" href="mailto:energy.solar.ukraine@gmail.com">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span>
+          <div><b>energy.solar.ukraine@gmail.com</b><span>Email</span></div>
+        </a>
+        <a class="contact-line" href="https://instagram.com/energy.solar.ukraine" target="_blank" rel="noopener">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".8" fill="currentColor" stroke="none"/></svg></span>
+          <div><b>energy.solar.ukraine</b><span>Instagram</span></div>
+        </a>
+        <a class="contact-line" href="https://tiktok.com/@energy.solar.ukraine" target="_blank" rel="noopener">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M9 3h3.2c.2 1.7 1.4 3 3.3 3.2v3.1c-1.2 0-2.3-.4-3.2-1v6.4a4.7 4.7 0 11-4.7-4.7c.3 0 .5 0 .8.1v3.2a1.6 1.6 0 101.1 1.5V3z"/></svg></span>
+          <div><b>energy.solar.ukraine</b><span>TikTok</span></div>
+        </a>
+        <a class="contact-line" href="#" style="cursor:default;">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+          <div><b>Київ, Київська область</b><span>Виїзд по всій Україні</span></div>
+        </a>
+      </div>
+      <div class="map-frame">
+        <div class="map-grid">
+          <svg viewBox="0 0 400 340" preserveAspectRatio="none">
+            <g stroke="rgba(253,251,252,.16)" stroke-width="1">
+              <line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="130" x2="400" y2="130"/>
+              <line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="270" x2="400" y2="270"/>
+              <line x1="70" y1="0" x2="70" y2="340"/><line x1="150" y1="0" x2="150" y2="340"/>
+              <line x1="230" y1="0" x2="230" y2="340"/><line x1="310" y1="0" x2="310" y2="340"/>
+            </g>
+            <path d="M0 210 Q90 160 150 190 T310 150 T400 190" stroke="rgba(128,197,7,.3)" stroke-width="1.6" fill="none"/>
+            <path d="M40 0 Q120 90 90 200 T160 340" stroke="rgba(128,197,7,.18)" stroke-width="1.4" fill="none"/>
+          </svg>
+        </div>
+        <div class="map-pin">
+          <span class="map-pin-ring"></span>
+          <span class="map-pin-ring delay"></span>
+          <span class="map-pin-dot"></span>
+        </div>
+        <div class="map-label"><b>Київ, Україна</b><span>50.4501° N, 30.5234° E</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="#top" class="foot-brand">
+        <img src="images/logo.svg" alt="Energy Solar" class="brand-logo">
+      </a>
+      <nav class="foot-links">
+        <a href="#services">Послуги</a>
+        <a href="#about">Про нас</a>
+        <a href="#partners">Партнери</a>
+        <a href="#process">Процес</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Контакти</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://t.me/NRGsolar" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 3L2.5 10.6l6 2.2M22 3L14.5 21l-5.8-8.2M22 3l-13.3 12"/></svg>
+        </a>
+        <a href="https://instagram.com/energy.solar.ukraine" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/></svg>
+        </a>
+        <a href="https://tiktok.com/@energy.solar.ukraine" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3h3.2c.2 1.7 1.4 3 3.3 3.2v3.1c-1.2 0-2.3-.4-3.2-1v6.4a4.7 4.7 0 11-4.7-4.7c.3 0 .5 0 .8.1v3.2a1.6 1.6 0 101.1 1.5V3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Energy Solar. Всі права захищені.</span>
+      <span>nrg-solar.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header = document.body;
+  const onScroll = () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    const open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => panel.classList.remove('open')));
+
+  // reveal on scroll (skipped when capturing full-page screenshots via ?noreveal)
+  if (new URLSearchParams(location.search).has('noreveal')) {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  }
+
+  // process slider (auto-advancing tabs)
+  const procTabsEl = document.getElementById('procTabs');
+  if (procTabsEl) {
+    const tabs = Array.from(procTabsEl.querySelectorAll('.proc-tab'));
+    const panels = Array.from(document.querySelectorAll('.proc-panel-item'));
+    const bignum = document.getElementById('procBignum');
+    const prevBtn = document.getElementById('procPrev');
+    const nextBtn = document.getElementById('procNext');
+    const total = tabs.length;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let timer = null;
+
+    function render(index) {
+      current = index;
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('is-active', i === index);
+        tab.classList.toggle('is-past', i < index);
+        tab.setAttribute('aria-selected', i === index);
+        if (i === index) {
+          // restart the CSS fill animation
+          const fill = tab.querySelector('.proc-tab-fill');
+          fill.style.animation = 'none';
+          void fill.offsetWidth;
+          fill.style.animation = '';
+        }
+      });
+      panels.forEach((p) => p.classList.toggle('is-active', Number(p.dataset.index) === index));
+      bignum.textContent = String(index + 1).padStart(2, '0');
+    }
+
+    function goTo(index) {
+      render((index + total) % total);
+    }
+
+    function startAuto() {
+      if (reduceMotion) return;
+      stopAuto();
+      timer = setInterval(() => goTo(current + 1), 6000);
+    }
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => { goTo(Number(tab.dataset.index)); startAuto(); });
+    });
+    prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+    procTabsEl.addEventListener('mouseenter', stopAuto);
+    procTabsEl.addEventListener('mouseleave', startAuto);
+
+    render(0);
+    startAuto();
+  }
+
+  // feedback form (no backend — demo submit)
+  const form = document.getElementById('leadForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    success.classList.add('show');
+    form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+  });
+</script>
+
+</body>
+</html>
