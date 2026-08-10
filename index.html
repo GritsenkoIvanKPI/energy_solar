@@ -350,7 +350,7 @@
 
   .guarantee-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:1.3rem; }
   .g-item{ background:var(--white); border:1px solid var(--line-on-light); border-radius:var(--radius-md); padding:1.5rem; text-align:left; }
-  .g-item b{ display:block; font-size:2rem; font-weight:800; margin-bottom:.3rem; }
+  .g-item b{ display:block; font-size:2rem; font-weight:800; margin-bottom:.3rem; white-space:nowrap; }
   .g-item span{ color:var(--slate); font-size:.88rem; }
 
   /* numbered stacked feature cards (dark) */
@@ -612,12 +612,14 @@
     .cta-strip{ padding:2.2rem; flex-direction:column; align-items:flex-start; }
     .proc-head{ flex-direction:column; align-items:flex-start; }
     .proc-intro{ text-align:left; max-width:none; }
+    .guarantee-row{ grid-template-columns:1fr 1fr; }
+    .g-item{ padding:1.1rem; }
+    .g-item b{ font-size:1.375rem; }
   }
   @media (max-width:640px){
     .wrap{ padding:0 1rem; }
     .value-head{ flex-direction:column; align-items:flex-start; }
     .services-grid{ grid-template-columns:1fr; }
-    .guarantee-row{ grid-template-columns:1fr 1fr; }
     .about-stats{ grid-template-columns:1fr; }
     .partners-grid{ grid-template-columns:repeat(2,1fr); }
     .form-row{ grid-template-columns:1fr; }
