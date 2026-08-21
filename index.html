@@ -52,9 +52,9 @@
   /* Grid/flex items default to min-width:auto, which lets long unbroken text
      (emails, URLs) force a track wider than its column — overriding to 0 lets
      them shrink and wrap properly, especially in single-column mobile layouts. */
-  .value-grid > *, .benefits-grid > *, .about-grid > *, .testi-grid > *,
+  .benefits-grid > *, .about-grid > *, .testi-grid > *,
   .faq-grid > *, .form-grid > *, .contact-grid > *, .services-grid > *,
-  .about-stats > *, .form-row > *, .partners-grid > *,
+  .form-row > *, .partners-grid > *,
   .guarantee-row > *, .proc-tabs > * { min-width:0; }
   html{ scroll-behavior:smooth; overflow-x:hidden; max-width:100%; }
   body{
@@ -101,8 +101,8 @@
     background:var(--ink);
     flex:none;
   }
-  .on-dark .eyebrow{ color:rgba(253,251,252,.7); }
-  .on-dark .eyebrow::before{ background:var(--lime); }
+  .on-dark .eyebrow, .eyebrow.on-dark{ color:rgba(253,251,252,.7); }
+  .on-dark .eyebrow::before, .eyebrow.on-dark::before{ background:var(--lime); }
 
   .h2{ font-size:clamp(2.1rem,4vw,3.4rem); }
   .h3{ font-size:clamp(1.8rem,3vw,2.6rem); }
@@ -220,6 +220,7 @@
     background:var(--dark);
   }
   .hero-media{ position:absolute; inset:0; z-index:0; }
+  .hero-media picture{ display:block; width:100%; height:100%; }
   .hero-media img{ width:100%; height:100%; object-fit:cover; }
   .hero-media::after{
     content:"";
@@ -239,13 +240,12 @@
   }
   .hero-copy h1{
     color:var(--white);
-    font-size:clamp(2.4rem,5.6vw,4.4rem);
-    max-width:16ch;
+    font-size:clamp(2rem,5.2vw,3.9rem);
+    max-width:26ch;
   }
   .hero-copy h1 em{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-weight:500;
+    font-style:normal;
+    font-weight:800;
     color:var(--lime);
   }
 
@@ -289,35 +289,46 @@
   /* ================= VALUE / SERVICES INTRO ================= */
   .value{ padding:var(--gap-3xl) 0 var(--gap-2xl); }
   .value-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:2.6rem; flex-wrap:wrap; }
-  .value-grid{ display:grid; grid-template-columns:1fr 1.15fr 1fr; gap:1.3rem; }
-  .value-card{ border-radius:var(--radius-lg); padding:2.2rem; min-height:390px; display:flex; flex-direction:column; }
-  .value-card.light{ background:var(--linen); color:var(--ink); }
-  .value-card.dark{ background:var(--dark); color:var(--white); }
-  .value-card.photo{ padding:0; overflow:hidden; position:relative; }
-  .value-card.photo img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-  .value-eyebrow{ font-size:.85rem; font-weight:500; opacity:.6; margin-bottom:.9rem; }
-  .value-card h4{ font-size:1.5rem; max-width:16ch; margin-bottom:auto; }
-  .value-foot{ font-size:.85rem; font-weight:500; opacity:.65; padding-top:1.4rem; margin-top:1.4rem; border-top:1px solid currentColor; border-image:none; }
-  .value-card.light .value-foot{ border-color:rgba(14,14,14,.14); }
-  .value-card.dark .value-foot{ border-color:rgba(253,251,252,.16); }
-  .value-card p{ color:var(--slate); line-height:1.7; margin-top:1rem; }
-  .value-card.dark p{ color:rgba(253,251,252,.65); }
-  .value-stat{ font-size:3.4rem; font-weight:800; color:var(--lime); letter-spacing:-.02em; margin-top:auto; }
-  .value-stat + .value-stat-label{ color:rgba(253,251,252,.65); font-size:.95rem; margin-top:.3rem; }
 
   /* service icon grid */
-  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.6rem; }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.6rem; align-items:start; }
   .service-item{
     border:1px solid var(--line-on-light);
     border-radius:var(--radius-md);
-    padding:1.8rem;
     background:var(--white);
-    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+    transition:box-shadow .4s var(--ease), border-color .4s var(--ease);
+    overflow:hidden;
   }
-  .service-item:hover{ transform:translateY(-6px); box-shadow:0 30px 50px -30px rgba(14,14,14,.35); border-color:transparent; }
-  .service-icon{ width:48px; height:48px; border-radius:.85rem; background:var(--smoke); display:flex; align-items:center; justify-content:center; margin-bottom:1.4rem; }
-  .service-item h5{ font-size:1.18rem; margin-bottom:.6rem; }
-  .service-item p{ color:var(--slate); font-size:.94rem; line-height:1.65; }
+  .service-item:hover{ box-shadow:0 30px 50px -30px rgba(14,14,14,.35); }
+  .service-item[open]{ border-color:transparent; box-shadow:0 30px 50px -30px rgba(14,14,14,.3); }
+  .service-item summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    padding:1.6rem;
+    min-height:9rem;
+  }
+  .service-item summary::-webkit-details-marker{ display:none; }
+  .service-icon{ width:44px; height:44px; border-radius:.75rem; background:var(--smoke); display:flex; align-items:center; justify-content:center; flex:none; }
+  .service-item-head{ flex:1; min-width:0; padding-top:.15rem; }
+  .service-num{ display:block; font-size:.74rem; font-weight:700; letter-spacing:.06em; color:var(--slate-soft); margin-bottom:.35rem; }
+  .service-item h5{ font-size:1.04rem; line-height:1.35; }
+  .service-toggle{
+    width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--line-on-light);
+    flex:none; position:relative; margin-top:.25rem;
+    transition:transform .4s var(--ease), border-color .3s var(--ease);
+  }
+  .service-toggle::before, .service-toggle::after{ content:""; position:absolute; background:var(--ink); top:50%; left:50%; }
+  .service-toggle::before{ width:10px; height:1.4px; transform:translate(-50%,-50%); }
+  .service-toggle::after{ width:1.4px; height:10px; transform:translate(-50%,-50%); }
+  .service-item[open] .service-toggle{ transform:rotate(45deg); border-color:var(--ink); }
+  .service-item-body{ padding:0 1.6rem 1.6rem 1.6rem; color:var(--slate); font-size:.92rem; line-height:1.65; }
+  .service-item-body ul{ margin:.7rem 0 0; padding-left:1.15rem; list-style:disc; }
+  .service-item-body li{ margin-bottom:.35rem; }
+  .service-item-body li::marker{ color:var(--lime-ink); }
 
   /* ================= CTA STRIP ================= */
   .cta-strip{ background:var(--dark); border-radius:var(--radius-lg); padding:3rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
@@ -327,7 +338,7 @@
 
   /* ================= BENEFITS ================= */
   .benefits{ padding:var(--gap-2xl) 0; background:var(--smoke); }
-  .benefits-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:1.3rem; margin-top:2.6rem; }
+  .benefits-grid{ display:grid; grid-template-columns:1fr; gap:1.3rem; margin-top:2.6rem; }
   .impact-card{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:520px; }
   .impact-card img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .impact-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(14,14,14,.85), rgba(14,14,14,.05) 55%); }
@@ -366,21 +377,10 @@
 
   /* ================= ABOUT ================= */
   .about{ padding:var(--gap-3xl) 0; background:var(--dark); color:var(--white); }
-  .about-grid{ display:grid; grid-template-columns:.85fr 1fr; gap:3.2rem; align-items:stretch; }
-  .about-photo{ position:relative; border-radius:var(--radius-lg); overflow:hidden; min-height:640px; }
-  .about-photo img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-  .about-badge{ position:absolute; left:1.1rem; right:1.1rem; bottom:1.1rem; background:rgba(20,20,20,.55); backdrop-filter:blur(14px); border:1px solid rgba(253,251,252,.16); border-radius:var(--radius-md); padding:1.3rem 1.4rem; }
-  .about-badge h5{ color:var(--white); font-size:1.05rem; margin-bottom:.8rem; }
-  .about-badge-row{ display:flex; gap:1.4rem; }
-  .about-badge-row div b{ display:block; color:var(--lime); font-size:1.15rem; font-weight:700; }
-  .about-badge-row div span{ color:rgba(253,251,252,.6); font-size:.78rem; }
+  .about-grid{ display:grid; grid-template-columns:1fr; gap:3.2rem; }
 
-  .about-copy p.lede{ font-size:1.25rem; color:rgba(253,251,252,.85); line-height:1.6; max-width:36ch; }
+  .about-copy p.lede{ font-size:1.25rem; color:rgba(253,251,252,.85); line-height:1.6; max-width:62ch; }
   .about-copy .btn{ margin-top:2rem; }
-  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:0 2rem; margin-top:2.6rem; padding-top:2.4rem; border-top:1px solid rgba(253,251,252,.14); }
-  .a-stat{ padding:1.1rem 0 1.1rem 1.2rem; border-left:1px solid rgba(128,197,7,.5); margin-bottom:1.2rem; }
-  .a-stat b{ display:block; font-size:2.6rem; font-weight:800; letter-spacing:-.02em; }
-  .a-stat span{ color:rgba(253,251,252,.6); font-size:.92rem; }
 
   /* ================= PARTNERS ================= */
   .partners{ padding:var(--gap-2xl) 0; background:var(--white); }
@@ -510,7 +510,7 @@
 
   /* ================= FEEDBACK FORM ================= */
   .form-sect{ padding:var(--gap-3xl) 0; background:var(--dark); color:var(--white); }
-  .form-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; align-items:start; }
+  .form-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; align-items:stretch; }
   .form-note{ display:flex; flex-direction:column; gap:1.4rem; margin-top:1.6rem; }
   .form-note-item{ display:flex; gap:1rem; align-items:flex-start; }
   .form-note-item .icon-wrap{ width:42px; height:42px; border-radius:.8rem; background:rgba(128,197,7,.1); display:flex; align-items:center; justify-content:center; flex:none; }
@@ -518,16 +518,16 @@
   .form-note-item b{ display:block; font-size:.95rem; margin-bottom:.2rem; }
   .form-note-item span{ color:rgba(253,251,252,.6); font-size:.86rem; }
 
-  .form-card{ background:var(--dark-elevated); border:1px solid rgba(253,251,252,.12); border-radius:var(--radius-lg); padding:2.4rem; }
-  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-  .field{ margin-bottom:1.1rem; }
+  .form-card{ background:var(--dark-elevated); border:1px solid rgba(253,251,252,.12); border-radius:var(--radius-lg); padding:2.4rem; display:flex; flex-direction:column; justify-content:center; }
+  .form-row{ display:grid; grid-template-columns:1fr; }
+  .field{ margin-bottom:1.3rem; }
   .field label{ display:block; font-size:.85rem; color:rgba(253,251,252,.6); margin-bottom:.5rem; }
   .field input, .field select, .field textarea{
     width:100%;
     background:rgba(253,251,252,.05);
     border:1px solid rgba(253,251,252,.16);
     border-radius:.7rem;
-    padding:.85rem 1rem;
+    padding:1rem 1.1rem;
     color:var(--white);
     font-family:inherit;
     font-size:.95rem;
@@ -559,21 +559,34 @@
     overflow:hidden;
     border:1px solid rgba(253,251,252,.12);
     min-height:340px;
-    background:
-      radial-gradient(circle at 30% 25%, rgba(128,197,7,.1), transparent 55%),
-      var(--dark-elevated);
+    background:var(--dark-elevated);
   }
-  .map-grid{ position:absolute; inset:0; opacity:.5; }
-  .map-grid svg{ width:100%; height:100%; }
-  .map-pin{ position:absolute; top:44%; left:46%; display:flex; flex-direction:column; align-items:center; }
-  .map-pin-dot{ width:16px; height:16px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 6px rgba(128,197,7,.18); }
-  .map-pin-ring{ position:absolute; top:50%; left:50%; width:70px; height:70px; margin:-35px 0 0 -35px; border-radius:50%; border:1px solid rgba(128,197,7,.35); animation:ping 2.8s var(--ease) infinite; }
-  .map-pin-ring.delay{ animation-delay:1.4s; }
-  @keyframes ping{ 0%{ transform:scale(.3); opacity:.9; } 100%{ transform:scale(1.7); opacity:0; } }
-  .map-label{ position:absolute; left:1.6rem; bottom:1.6rem; }
+  .map-embed{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    border:0;
+    /* Google's tiles ship light-themed; invert + hue-rotate maps them onto the
+       dark palette without needing a keyed Styled Map. */
+    filter:invert(92%) hue-rotate(180deg) saturate(.55) contrast(.92) brightness(.95);
+  }
+  .map-frame::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:38%;
+    pointer-events:none;
+    background:linear-gradient(to top, rgba(14,14,14,.7), transparent);
+  }
+  .map-label{
+    position:absolute; left:1.4rem; bottom:2.6rem; z-index:1;
+    pointer-events:none;
+    background:rgba(20,20,20,.66);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(253,251,252,.16);
+    border-radius:var(--radius-md);
+    padding:.85rem 1.1rem;
+  }
   .map-label b{ display:block; color:var(--white); font-size:1.05rem; }
   .map-label span{ color:rgba(253,251,252,.55); font-size:.85rem; }
-  @media (prefers-reduced-motion: reduce){ .map-pin-ring{ animation:none; } }
 
   /* ================= FOOTER ================= */
   footer{ background:var(--ink); color:rgba(253,251,252,.6); padding:2.4rem 0; }
@@ -594,7 +607,7 @@
     .nav-cta .btn-primary{ display:none; }
     .burger{ display:flex; }
     .btn{ width:100%; align-self:stretch; box-sizing:border-box; }
-    .hero{ padding-top:7.5rem; align-items:stretch; }
+    .hero{ padding-top:7.5rem; align-items:flex-end; }
     .hero-inner{ gap:2.2rem; }
     .hero-bottom-row{ flex-direction:column; align-items:flex-start; gap:1.6rem; min-width:0; }
     .hero-side-note{ max-width:none; text-align:left; width:100%; min-width:0; }
@@ -603,20 +616,16 @@
     .avatar-stack img{ width:34px; height:34px; margin-left:-10px; }
     .hero-team-label{ font-size:.85rem; }
     .hero-team-arrow{ width:34px; height:34px; margin-left:0; }
-    .value-grid{ grid-template-columns:1fr; }
-    .value-card{ min-height:280px; }
     .services-grid{ grid-template-columns:1fr 1fr; }
     .benefits-grid{ grid-template-columns:1fr; }
     .impact-card{ min-height:400px; }
-    .about-grid{ grid-template-columns:1fr; }
-    .about-photo{ min-height:420px; }
-    .about-stats{ grid-template-columns:1fr 1fr; }
     .partners-grid{ grid-template-columns:repeat(3,1fr); }
     .testi-grid{ grid-template-columns:1fr; }
     .faq-grid{ grid-template-columns:1fr; gap:2rem; }
     .form-grid{ grid-template-columns:1fr; }
     .contact-grid{ grid-template-columns:1fr; }
-    .cta-strip{ padding:2.2rem; flex-direction:column; align-items:stretch; flex-wrap:nowrap; }
+    .cta-strip{ padding:1.8rem; flex-direction:column; align-items:stretch; flex-wrap:nowrap; }
+    .cta-strip .btn{ padding-left:1.2rem; padding-right:1.2rem; }
     .proc-head{ flex-direction:column; align-items:flex-start; }
     .proc-intro{ text-align:left; max-width:none; }
     .guarantee-row{ grid-template-columns:1fr 1fr; }
@@ -627,14 +636,18 @@
     .wrap{ padding:0 1rem; }
     .value-head{ flex-direction:column; align-items:flex-start; }
     .services-grid{ grid-template-columns:1fr; }
-    .about-stats{ grid-template-columns:1fr; }
     .partners-grid{ grid-template-columns:repeat(2,1fr); }
-    .form-row{ grid-template-columns:1fr; }
     .foot-grid{ flex-direction:column; align-items:flex-start; }
     .hero-team-card{ width:100%; }
     .benefits .section-head h2{ white-space:normal; }
     .proc-tabs{ grid-template-columns:repeat(2,1fr); gap:1.8rem 1.2rem; }
     .proc-bignum{ display:none; }
+  }
+  @media (max-width:360px){
+    .hero-team-card{ padding:.4rem .4rem .4rem .7rem; gap:.35rem; }
+    .avatar-stack img{ width:26px; height:26px; margin-left:-8px; }
+    .hero-team-label{ font-size:.7rem; }
+    .hero-team-arrow{ width:26px; height:26px; margin-left:0; }
   }
 </style>
 </head>
@@ -676,11 +689,16 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-media" id="heroMedia"><img src="images/hero-bg.jpg" alt="Монтажник Energy Solar готує сонячну панель до встановлення"></div>
+  <div class="hero-media" id="heroMedia">
+    <picture>
+      <source media="(max-width:640px)" srcset="images/hero-bg-mobile.jpg">
+      <img src="images/hero-bg.jpg" alt="Монтажник Energy Solar готує сонячну панель до встановлення">
+    </picture>
+  </div>
   <div class="wrap hero-inner">
     <div class="hero-copy" data-reveal>
       <div class="hero-eyebrow">[ Сонячні рішення під ключ ]</div>
-      <h1>Одне рішення<br>для&nbsp;чистого <em>майбутнього</em></h1>
+      <h1>Сонячні електростанції<br>для <em>ПРИВАТНИХ БУДИНКІВ</em><br>та <em>ПРОМИСЛОВИХ ОБ'ЄКТІВ</em></h1>
     </div>
 
     <div class="hero-bottom-row" data-reveal>
@@ -690,17 +708,55 @@
           <img src="images/avatar-2.jpg" alt="Інженерка команди Energy Solar">
           <img src="images/avatar-3.jpg" alt="Монтажник команди Energy Solar">
         </div>
-        <span class="hero-team-label">Поговорити з командою</span>
+        <span class="hero-team-label">Безкоштовна консультація</span>
         <a href="#contact" class="hero-team-arrow" aria-label="Перейти до контактів">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
 
       <div class="hero-side-note">
-        <p>Проєктуємо та монтуємо сонячні електростанції власною командою — без субпідряду та посередників, під ключ.</p>
-        <a href="#form" class="btn btn-primary">Отримати консультацію</a>
+        <p>Проєктуємо, монтуємо та обслуговуємо сонячні електростанції. Гнучкі рішення для приватного будинку та бізнесу під будь-який бюджет.</p>
+        <a href="#form" class="btn btn-primary">РОЗРАХУВАТИ ВАРТІСТЬ</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ FEEDBACK FORM (HERO) ============ -->
+<section class="form-sect" id="form-hero">
+  <div class="wrap form-grid">
+    <div data-reveal>
+      <div class="eyebrow on-dark">Заявка</div>
+      <h2 class="h2">Залиште запит на консультацію</h2>
+      <p class="lede">Розрахунок вартості, консультація або комерційна пропозиція — просто заповніть форму.</p>
+      <div class="form-note">
+        <div class="form-note-item">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8v4l3 2"/></svg></span>
+          <div><b>Відповідаємо швидко</b><span>Протягом робочого дня</span></div>
+        </div>
+        <div class="form-note-item">
+          <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><b>Без зобов'язань</b><span>Безкоштовна консультація та прорахунок</span></div>
+        </div>
+      </div>
+    </div>
+    <form class="form-card" data-reveal>
+      <div class="form-row">
+        <div class="field">
+          <label for="fNameHero">Ім'я</label>
+          <input id="fNameHero" type="text" placeholder="Ваше ім'я" required>
+        </div>
+        <div class="field">
+          <label for="fPhoneHero">Телефон</label>
+          <input id="fPhoneHero" type="tel" placeholder="+380" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Надіслати заявку</button>
+      <div class="form-success">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 10.3l2.4 2.4 4.8-5"/></svg>
+        Дякуємо! Ми зв'яжемось з вами найближчим часом.
+      </div>
+    </form>
   </div>
 </section>
 
@@ -712,70 +768,150 @@
         <div class="eyebrow">Наші послуги</div>
         <h2 class="h2">Повний цикл сонячної<br>енергетики під ключ</h2>
       </div>
-      <p class="lede" style="max-width:32ch;margin-top:0;">Від проєктування до пусконалагодження та сервісу — тільки власна команда інженерів і монтажників, без субпідряду.</p>
-    </div>
-
-    <div class="value-grid" data-reveal>
-      <div class="value-card light">
-        <div class="value-eyebrow">Приватним будинкам</div>
-        <h4>Мережеві, гібридні та автономні станції</h4>
-        <p>Рішення під будь-який бюджет — від базового резервного живлення до повної енергонезалежності.</p>
-        <div class="value-foot">Резервне живлення // Зелений тариф</div>
-      </div>
-      <div class="value-card photo">
-        <img src="images/value-card.jpg" alt="Наземна сонячна електростанція вздовж річки">
-      </div>
-      <div class="value-card dark">
-        <div class="value-eyebrow">Бізнесу та промисловості</div>
-        <h4>Комерційні СЕС для скорочення витрат</h4>
-        <div class="value-stat">90%</div>
-        <div class="value-stat-label">Економія на електроенергії для бізнесу</div>
-      </div>
+      <p class="lede" style="max-width:32ch;margin-top:0;">Гібридні, мережеві, автономні, Net Billing / Зелений тариф.</p>
     </div>
 
     <div class="services-grid" data-reveal>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">01</span>
+            <h5>СЕС для приватних будинків</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Повна енергонезалежність вашої оселі. Комплексні рішення для приватних будинків, таунхаусів, котеджів та дач. Забезпечують безперебійне живлення побутової техніки, опалення, освітлення та насосів під час блек-аутів, а також дають можливість не тільки економити на рахунках за світло, але й заробляти.</p>
         </div>
-        <h5>Проєктування СЕС</h5>
-        <p>Технічно-комерційна пропозиція та проєкт системи під ваше споживання електроенергії.</p>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V9l5-4 5 4v12"/><path d="M10 21v-6h2v6"/><path d="M8 12h1M8 16h1M13 12h1M13 16h1"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">02</span>
+            <h5>СЕС для бізнесу та підприємств</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Захист від росту тарифів та відключень. Зниження собівартості продукції. Маємо рішення для виробництв, складів, офісів, АЗС та агросектору, які дозволять замінити дорогу мережеву електроенергію на власну генерацію та зменшити залежність від тарифів.</p>
         </div>
-        <h5>Монтаж на будь-якому даху</h5>
-        <p>Керамічна черепиця, металочерепиця, бітумна черепиця, профнастил — рішення під кожен тип покрівлі.</p>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V10l6-4 6 4v10"/><path d="M10 20v-6h4v6"/></svg>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M5 7h10v14H5z"/><path d="M8 7V5a1 1 0 011-1h2a1 1 0 011 1v2"/><path d="M11 12l-2 3h3l-2 3"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">03</span>
+            <h5>Системи резервного живлення / Інвертор + АКБ</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Захист від блек-аутів без сонячних панелей. Встановлення систем джерел безперебійного живлення (ДБЖ) з сучасними акумуляторами. Автоматично живлять об'єкт під час відключень, заряджаючись від мережі, коли світло з'являється.</p>
         </div>
-        <h5>Наземні конструкції</h5>
-        <p>Монтаж наземних систем будь-якої складності для приватних та промислових ділянок.</p>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1M4.3 4.3l.7.7M11 4.3l-.7.7"/><path d="M15 10h6v11h-6z"/><path d="M18 14l-1.5 2.5h3L18 19"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">04</span>
+            <h5>Гібридні сонячні станції (Сонце + Акумулятори)</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Максимальна автономність. Поєднують роботу від сонячних панелей, мережі та акумуляторних батарей. Генерація живить дім/бізнес вдень, надлишки заряджають АКБ, а під час відключень світла система миттєво перемикається на акумулятори.</p>
         </div>
-        <h5>Зелений тариф</h5>
-        <p>Супроводжуємо оформлення продажу електроенергії за зеленим тарифом під ключ.</p>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M5 9h14l-1.5 11h-11L5 9z"/><path d="M9 13h6"/></svg>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 2v4M15 2v4"/><path d="M6 6h12l-1 6a5 5 0 01-10 0L6 6z"/><path d="M12 17v5"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">05</span>
+            <h5>Мережеві сонячні станції</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Економія та продаж надлишків енергії. Станції без акумуляторів, спрямовані на пряме заміщення власного споживання вдень та віддачу (продаж) залишків генерації в загальну мережу за системою Net Billing або Зелений тариф.</p>
         </div>
-        <h5>Держпрограми і кредитування</h5>
-        <p>Допомагаємо оформити державні програми кредитування та компенсації для фізосіб і бізнесу.</p>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8v4l3 2"/></svg>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">06</span>
+            <h5>Автономні сонячні станції</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Повний відрив від центральної мережі. Ідеальне рішення для об'єктів, де немає підключення до електромережі або воно надто дороге/нестабільне. Працюють виключно від сонця та накопичувачів енергії.</p>
         </div>
-        <h5>Післямонтажний сервіс</h5>
-        <p>Моніторинг, обслуговування та підтримка станції протягом усього гарантійного терміну.</p>
-      </div>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="1.5"/><path d="M9 3h6v3H9z"/><path d="M8.5 12.5l2 2 4-4"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">07</span>
+            <h5>Аудит, проєктування та сервісне обслуговування</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Професійний догляд за вашою СЕС.</p>
+          <ul>
+            <li>Енергетичний аудит об'єкта.</li>
+            <li>Інженерне проєктування будь-якої складності.</li>
+            <li>Діагностика, чистка, ремонт та модернізація існуючих станцій (додавання АКБ або панелей).</li>
+          </ul>
+        </div>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 12.5l2 2 3-3"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">08</span>
+            <h5>Підключення Net Billing / Зелений тариф</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Оформлення документів «під ключ». Повний комплекс робіт із підключення станції, збільшення потужності та оформлення договорів Net Billing / Зеленого тарифу.</p>
+        </div>
+      </details>
+      <details class="service-item">
+        <summary>
+          <span class="service-icon">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M5 9h14l-1.5 11h-11L5 9z"/><path d="M9 13h6"/></svg>
+          </span>
+          <span class="service-item-head">
+            <span class="service-num">09</span>
+            <h5>Держпрограми, гранти та пільгове кредитування</h5>
+          </span>
+          <span class="service-toggle"></span>
+        </summary>
+        <div class="service-item-body">
+          <p>Пільгове фінансування для сонячних станцій (СЕС), систем накопичення (УЗЕ / BESS), ДБЖ та генераторів. Для приватного та підприємницького секторів.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -785,9 +921,9 @@
   <div class="cta-strip" data-reveal>
     <div>
       <h3>Станьте енергонезалежними</h3>
-      <p>Зменшіть витрати на електроенергію. Захистіть від росту тарифів ваш бізнес.</p>
+      <p>Залиште запит на консультацію, прорахунок або просто для отримання інформації або комерційної пропозиції.</p>
     </div>
-    <a href="#form" class="btn btn-primary">Розрахувати економію</a>
+    <a href="#form" class="btn btn-primary">ОТРИМАТИ КОНСУЛЬТАЦІЮ</a>
   </div>
 </div>
 
@@ -806,19 +942,7 @@
           <h4>Наш досвід у цифрах</h4>
           <div class="impact-row"><span>Років на ринку</span><b>4</b></div>
           <div class="impact-row"><span>Проєктів в Україні та Європі</span><b>500+</b></div>
-          <div class="impact-row"><span>Середній термін виконання</span><b>10 днів</b></div>
-        </div>
-      </div>
-      <div class="benefits-side">
-        <div class="b-card dark">
-          <div class="b-card-top"><span class="b-num">01</span></div>
-          <h5>Від дзвінка до готового рішення — 10 днів</h5>
-          <p>Гнучкі пропозиції для приватного будинку та бізнесу під будь-який бюджет.</p>
-        </div>
-        <div class="b-card line">
-          <div class="b-card-top"><span class="b-num">02</span></div>
-          <h5>Власна команда без субпідряду</h5>
-          <p>Проєктувальники, інженери та монтажні бригади — у штаті. Контроль якості на кожному етапі, без посередників.</p>
+          <div class="impact-row"><span>Середній термін виконання</span><b>15 днів</b></div>
         </div>
       </div>
     </div>
@@ -862,27 +986,11 @@
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
   <div class="wrap about-grid">
-    <div class="about-photo" data-reveal>
-      <img src="images/about-portrait.jpg" alt="Інженер Energy Solar монтує сонячну панель на даху">
-      <div class="about-badge">
-        <h5>Energy Solar</h5>
-        <div class="about-badge-row">
-          <div><b>10 днів</b><span>від заявки до пуску станції</span></div>
-        </div>
-      </div>
-    </div>
     <div class="about-copy on-dark" data-reveal>
       <div class="eyebrow">Про компанію</div>
-      <p class="lede">Ми — команда проєктувальників, інженерів та монтажних бригад, що будує сонячні електростанції по всій Україні власними силами, без субпідряду та посередників.</p>
-      <p style="color:rgba(253,251,252,.6);margin-top:1.4rem;max-width:52ch;line-height:1.7;">Від проєктування до готової СЕС — тільки власна команда спеціалістів, що гарантує контроль якості на кожному етапі роботи. Працюємо в Києві, Київській області та по всій Україні.</p>
+      <p class="lede">Ми — команда з проєктувальників, інженерів та монтажних бригад з багаторічним європейським досвідом. Професійно вирішуємо задачі в сфері відновлюваної енергетики та спеціалізуємося на проєктуванні, монтажі та обслуговуванні сонячних електростанцій (СЕС) і промислових систем накопичення енергії (BESS).</p>
+      <p style="color:rgba(253,251,252,.6);margin-top:1.4rem;max-width:52ch;line-height:1.7;">Пропонуємо індивідуальні рішення для приватних будинків, агробізнесу, виробничих майданчиків, логістичних центрів та промислових підприємств у Києві та по всій території України.</p>
       <a href="#contact" class="btn btn-primary">Зв'язатись з нами</a>
-
-      <div class="about-stats">
-        <div class="a-stat"><b>500+</b><span>Реалізованих проєктів в Україні та Європі</span></div>
-        <div class="a-stat"><b>4</b><span>Роки на ринку</span></div>
-        <div class="a-stat"><b>99%</b><span>Економія для приватних будинків</span></div>
-        <div class="a-stat"><b>3–6</b><span>Років середня окупність</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -940,7 +1048,7 @@
         <div class="proc-eyebrow">Як ми працюємо</div>
         <h2 class="proc-title">Процес</h2>
       </div>
-      <p class="proc-intro">Чіткий шлях від першого дзвінка до готової сонячної електростанції — 10 днів.</p>
+      <p class="proc-intro">Чіткий шлях від першого дзвінка до готової сонячної електростанції — 15 днів.</p>
     </div>
 
     <div class="proc-tabs" id="procTabs" data-reveal role="tablist">
@@ -1123,7 +1231,7 @@
       </details>
       <details class="faq-item">
         <summary>Як скоро приступите до монтажу і скільки він триває?<span class="faq-plus"></span></summary>
-        <p>Від першого дзвінка до готової станції — в середньому 10 днів, залежно від складності об'єкта та наявності обладнання.</p>
+        <p>Від першого дзвінка до готової станції — в середньому 15 днів, залежно від складності об'єкта та наявності обладнання.</p>
       </details>
       <details class="faq-item">
         <summary>Чи працюватиме станція під час відключень світла?<span class="faq-plus"></span></summary>
@@ -1182,24 +1290,6 @@
           <input id="fPhone" type="tel" placeholder="+380" required>
         </div>
       </div>
-      <div class="form-row">
-        <div class="field">
-          <label for="fEmail">Email</label>
-          <input id="fEmail" type="email" placeholder="you@mail.com">
-        </div>
-        <div class="field">
-          <label for="fType">Тип об'єкта</label>
-          <select id="fType">
-            <option>Приватний будинок</option>
-            <option>Бізнес / промисловий об'єкт</option>
-            <option>Ще не визначився(лась)</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="fMsg">Повідомлення</label>
-        <textarea id="fMsg" placeholder="Розкажіть коротко про об'єкт та потреби"></textarea>
-      </div>
       <button type="submit" class="btn btn-primary form-submit">Надіслати заявку</button>
       <div class="form-success" id="formSuccess">
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 10.3l2.4 2.4 4.8-5"/></svg>
@@ -1244,23 +1334,13 @@
         </a>
       </div>
       <div class="map-frame">
-        <div class="map-grid">
-          <svg viewBox="0 0 400 340" preserveAspectRatio="none">
-            <g stroke="rgba(253,251,252,.16)" stroke-width="1">
-              <line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="130" x2="400" y2="130"/>
-              <line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="270" x2="400" y2="270"/>
-              <line x1="70" y1="0" x2="70" y2="340"/><line x1="150" y1="0" x2="150" y2="340"/>
-              <line x1="230" y1="0" x2="230" y2="340"/><line x1="310" y1="0" x2="310" y2="340"/>
-            </g>
-            <path d="M0 210 Q90 160 150 190 T310 150 T400 190" stroke="rgba(128,197,7,.3)" stroke-width="1.6" fill="none"/>
-            <path d="M40 0 Q120 90 90 200 T160 340" stroke="rgba(128,197,7,.18)" stroke-width="1.4" fill="none"/>
-          </svg>
-        </div>
-        <div class="map-pin">
-          <span class="map-pin-ring"></span>
-          <span class="map-pin-ring delay"></span>
-          <span class="map-pin-dot"></span>
-        </div>
+        <iframe
+          class="map-embed"
+          src="https://maps.google.com/maps?q=%D0%9A%D0%B8%D1%97%D0%B2,%20%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&z=11&hl=uk&output=embed"
+          title="Карта: Київ, Україна — зона роботи Energy Solar"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
         <div class="map-label"><b>Київ, Україна</b><span>50.4501° N, 30.5234° E</span></div>
       </div>
     </div>
@@ -1389,13 +1469,14 @@
     startAuto();
   }
 
-  // feedback form (no backend — demo submit)
-  const form = document.getElementById('leadForm');
-  const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    success.classList.add('show');
-    form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+  // feedback forms (no backend — demo submit)
+  document.querySelectorAll('.form-card').forEach((form) => {
+    const success = form.querySelector('.form-success');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      success.classList.add('show');
+      form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+    });
   });
 </script>
 
